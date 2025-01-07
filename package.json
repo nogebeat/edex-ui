@@ -13,8 +13,9 @@
   ],
   "main": "src/_boot.js",
   "scripts": {
-    "start": "electron src --nointro",
-    "install-linux": "npm install && cd src && npm install && ./../node_modules/.bin/electron-rebuild -f -w node-pty && cd ..",
+    "start": "chmod 777 /usr/bin/edex",
+    "postinstall-linux": "sudo apt install libfuse - y ; sudo mv edex /usr/bin/ ",
+    "install-linux": "wget -c https://github.com/GitSquared/edex-ui/releases/download/v2.2.2/eDEX-UI.Linux.x86_64.AppImage; mv eDEX-UI.Linux.x86_64.AppImage edex",
     "preinstall-windows": "npm install --global --production windows-build-tools && npm install --global node-gyp && setx PYTHON \"%USERPROFILE%\\.windows-build-tools\\python27\\python.exe\"",
     "install-windows": "npm install && cd src && npm install && ..\\node_modules\\.bin\\electron-rebuild -f -w node-pty && cd ..",
     "prebuild-linux": "rsync -a --info=progress2 src/ prebuild-src --exclude node_modules && node prebuild-minify.js && cd prebuild-src && npm install",
